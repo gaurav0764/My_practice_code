@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <input type="text" ng-model="myname" ng-change="getByUser(myname)"/>
+    <button ng-click="getByUser(myname)">Search</button>
+    <p>name : {{username}}</p>
+    <p>bio : {{status}}</p>
+    <p>following : {{statustext}}</p>
+    <img src={{image}}/>
+    <style>
+        img {
+            height: 120px;
+            width: 120px
+        }
+    </style>
+</div>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $http) {
+
+        $scope.getByUser = function (user) {
+
+            $http.get("https://api.github.com/users/" + user)
+                .then(function (response) {
+
+                    $scope.username = response.data.name;
+                    $scope.status = response.data.bio;
+                    $scope.statustext = response.data.following;
+                    $scope.image = response.data.avatar_url;
+
+                });
+        }
+       
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title> select box </title>
+    <link href="bootstrap\dist\css\bootstrap.min.css" rel="stylesheet">
+    <script src="js\bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <select id="count">
+                <option value=" ">select country</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select id="state">
+                <option value=" ">select state</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select id="city">
+                <option value=" ">select city</option>
+            </select>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $.getJSON("countries.json", function (country) {
+            $.each(country, function (key, value) {
+                $("#count").append($("<option> </option>")
+                    .attr("value", value.CountryName)
+                    .text(value.CountryName));
+
+            });
+
+            var tempcountry = [];
+            $("#count").on("change", function () {
+                var c = this.value;
+                var tempcountry = [];
+                $.each(country, function (key, value) {
+                    if (value.CountryName == c) {
+                        tempcountry = value.States;
+                        $.each(tempcountry, function (key, value) {
+                            $("#state").append($("<option> </option>")
+                                .attr("value", value.StateName)
+                                .text(value.StateName));
+                        });
+                    }
+                });
+
+            });
+            var tempcity = [];
+            $("#state").on("change", function () {
+                var s = this.value;
+                var tempcity = [];
+                console.log(tempcountry)
+                $.each(tempcountry, function (key, value) {
+                    if (value.StateName == s) {
+                        tempcity = value.Cities;
+                        $("#city").empty();
+                        $("#city").append($("<option></option>")
+                            .text("select city"));
+                        $.each(tempcity, function (key, value) {
+                            $("#city").append($("<option> </option>")
+                                .attr("value", value)
+                                .text(value));
+                        });
+                    }
+
+                });
+
+            });
+        });
+
+    });
+
+
+</script>
+</body>
+</html>

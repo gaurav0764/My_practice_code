@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="formCtrl">
+
+    <form>
+        Email: <input type="email" placeholder="type your email address" ng-model="email"> <br> <br>
+
+        pass: <input type="password" placeholder="type your password" ng-model="password"> <br> <br>
+
+        <button> submit</button>
+    </form>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('formCtrl', function($scope) {
+        $scope.email = "John";
+    });
+</script>
+</head>
+
+</body>
+</html>

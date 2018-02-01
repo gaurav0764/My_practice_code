@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+<div style="margin-top:30px ">
+    <div class="row">
+        <div class="col-md-3">
+            <label for="department">Department :- </label>
+            <select id="department" class="form-control">
+                <option value="">Select department</option>
+            </select>
+        </div>
+
+        <div class="col-md-3 col-md-offset-3">
+            <label for="department">Student :- </label>
+            <select id="student" class="form-control">
+                <option value="">Select student</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div style="margin-left: 258px;width: 362px;">
+            <p style="padding: 15px;
+    border: 1px solid #ccc;
+    margin-top: 30px;
+    font-size: 20px;
+    text-align: center;"></p>
+        </div>
+    </div>
+</div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.each(students, function (key, value) {
+            $('#department').append($("<option></option>")
+                .attr("value", value.deptName)
+                .text(value.deptName));
+        });
+        var tempStudent = [];
+        $('#department').on('change', function () {
+            $('p').empty();
+            var dept = this.value;
+            tempStudent = [];
+            $.each(students, function (key, value) {
+                if (value.deptName == dept) {
+                    tempStudent = value.student;
+                    $('#student').empty();
+                    $('p').empty();
+                    $('#student').append($("<option></option>")
+                        .text("Select student"));
+                    $.each(tempStudent, function (key, value) {
+                        $('#student').append($("<option></option>")
+                            .attr("value", value.name)
+                            .text(value.name));
+                    });
+
+
+                }
+            })
+        })
+        $('#student').on('change', function () {
+            var stdnt = this.value;
+            $.each(tempStudent, function (key, value) {
+                if (value.name == stdnt) {
+
+                    var temp = value.address;
+                    $('p').text(temp)
+
+                }
+            })
+        })
+    });
+
+    var students = [
+        {
+            deptName: "IT",
+            student: [
+                {
+                    "name": "sam",
+                    "address": "bihar"
+                },
+                {
+                    "name": "VIKKE",
+                    "address": "up"
+                },
+                {
+                    "name": "MODI",
+                    "address": "kolkata"
+                }
+            ]
+        },
+
+        {
+            deptName: "CSE",
+            student: [
+                {
+                    "name": "gaurav",
+                    "address": ["delhi", "bengslure"]
+                },
+                {
+                    "name": "VIKKEe",
+                    "address": "jharkhand"
+                },
+                {
+                    "name": "MODI ji",
+                    "address": "bihar"
+
+                }
+            ]
+        },
+
+        {
+            deptName: "EEE",
+            student: [
+                {
+                    "name": "santosh",
+                    "address": "andhra"
+                },
+                {
+                    "name": "chobey",
+                    "address": "bangalore"
+                },
+                {
+                    "name": "ritesh",
+                    "address": "hyderabad"
+                }
+            ]
+        },
+
+        {
+            deptName: "MECH",
+            student: [
+                {
+                    "name": "vukrant",
+                    "address": "chennai"
+                },
+                {
+                    "name": "dhiraj",
+                    "address": "noida"
+                },
+                {
+                    "name": "partosh",
+                    "address": "gurgao"
+                }
+            ]
+        }
+    ]
+</script>
+</body>
+</html>

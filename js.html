@@ -1,0 +1,32 @@
+<html>
+    <head>
+    </head>
+    <body>
+            <input id="name" type="text" name="name" value=" "/>
+                    <select id="demo">
+                      <option value="select"></option> 
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+            <button type="button" id="myBtn" > click </button>  
+                <div id="content"></div>        
+            <script>
+            document.getElementById("myBtn").addEventListener("click", function() {
+    myFunction();
+});
+
+function myFunction() {
+    var v= document.getElementById("name").value
+    var u= document.getElementById("demo").value
+    for ( i=1; i<=u; i++)
+    {
+        var p=document.createElement("p");
+        p.innerText=v;
+        document.getElementById("content").appendChild(p);
+    }
+}
+            </script>    
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body ng-app="myapp">
+<script>
+    var app = angular.module("myapp", []);
+    app.controller("mycntrl", function ($scope) {
+        $scope.value = 1;
+        $scope.name = 2;
+        $scope.array = [
+            {
+                deptName: "IT",
+                student: [
+                    {
+                        name: "sam",
+                        address: "bihar"
+                    },
+                    {
+                        name: "VIKKE",
+                        address: "up"
+                    },
+                    {
+                        name: "MODI",
+                        address: "kolkata"
+                    }
+                ]
+            },
+
+            {
+                deptName: "CSE",
+                student: [
+                    {
+                        name: "gaurav",
+                        address: ["delhi", "bengslure"]
+                    },
+                    {
+                        name: "VIKKEe",
+                        address: "jharkhand"
+                    },
+                    {
+                        name: "MODI ji",
+                        address: "bihar"
+
+                    }
+                ]
+            },
+
+            {
+                deptName: "EEE",
+                student: [
+                    {
+                        name: "santosh",
+                        address: "andhra"
+                    },
+                    {
+                        name: "chobey",
+                        address: "bangalore"
+                    },
+                    {
+                        name: "ritesh",
+                        address: "hyderabad"
+                    }
+                ]
+            },
+            {
+                deptName: "EEE",
+                student: [
+                    {
+                        name: "santosh",
+                        address: "andhra"
+                    },
+                    {
+                        name: "chobey",
+                        address: "bangalore"
+                    },
+                    {
+                        name: "ritesh",
+                        address: "hyderabad"
+                    }
+                ]
+            }
+        ]
+    })
+
+</script>
+<div ng-controller="mycntrl">
+<table class="table">
+    <tr>
+        <td>Dept.</td>
+        <td>Name</td>
+    </tr>
+    <tr ng-repeat="temp in  array">
+        <td>{{temp.deptName}}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

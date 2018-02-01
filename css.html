@@ -1,0 +1,30 @@
+<html>
+    <head>
+            <link href="bootstrap\dist\css\bootstrap.min.css"  rel="stylesheet" >
+<style>
+    #bt { width: 100px; height: 200px}
+    #a {color: red }
+    #b { color: green}
+    #c { color: blue}
+
+</style>
+    </head>
+    <body>
+        <select id="top">
+            <option value=" "> </option>
+            <option  value="red"> red </option>
+            <option  value="green">green</option>
+            <option value="blue">blue</option>
+        </select>
+        <button id="bt" type="button">   </button>  
+        <script>
+            document.getElementById("top").addEventListener("click", function() {
+    myFunction();
+            });
+        function myFunction() {
+            document.getElementById("bt").style.backgroundColor = document.getElementById("top").value;
+    
+        }
+        </script>
+    </body>
+</html>

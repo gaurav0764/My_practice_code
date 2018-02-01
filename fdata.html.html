@@ -1,0 +1,53 @@
+<html>
+    <title> form </title>
+    <head>
+        <style>
+    
+        </style>
+    </head>
+    <body>
+        <form>
+            First name:<br>
+            <input type="text" name="firstname" id="name">
+            <br>
+            Last name:<br>
+            <input type="text" name="lastname" id="lname">
+            <br>
+            Age:<br>
+            <input type="number" name="age" id="age">
+            <br>
+            Sex:<br>
+            <input type="text" name="sex" id="gender"> </input>
+            <br> <br>
+        </form>
+
+            <input type="button" value="Add" onclick="myFunction()"> </input>
+        
+     <div id="userlist"></div>    
+        <script>
+            var user = [];
+            function myFunction(){
+                var tmp={}
+                 tmp.name = document.getElementById("name").value;
+                 tmp.lname= document.getElementById("lname").value;
+                 tmp.age  = document.getElementById("age").value;
+                 tmp.sex  = document.getElementById("gender").value;
+                user.push(tmp);
+                render();
+                
+            }
+
+            function render(){
+            document.getElementById("userlist").innerText = " ";
+            user.forEach(element => {
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode(element.name+" "+element.lname+" "+element.age+" "+element.sex); 
+            node.appendChild(textnode);
+            
+            document.getElementById("userlist").appendChild(node)   ;
+                     
+            });
+            }
+        </script>
+    </body>
+</html>

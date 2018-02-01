@@ -1,0 +1,69 @@
+<html>  
+    <head>
+        <link href="bootstrap\dist\css\bootstrap.min.css"  rel="stylesheet" >
+        <script src="jquery\dist\jquery.min.js"></script>
+        <script src="js\bootstrap.min.js"></script>
+        <link href="fontawesome\css\font-awesome.min.css" rel="stylesheet">
+        <style>
+    #a { border-bottom: none; text-align: center; font-family: Titillium-Semibold;
+         font-size: 35px;
+         color: #686670;
+         letter-spacing: 0.21px;}
+    #b { border-top: none; text-align: center; background: #5F52A1;
+         border-radius: 3px;padding: 4px; border: none;}
+    #bu {background-color: #5F52A1;
+         border-color: #5F52A1;}   
+         .form-control{
+                border: none;
+                border-bottom: 1px solid blue;
+                outline: none;
+                box-shadow: none;
+                border-radius: 0px
+         }
+
+        </style>
+   </head>
+        <body>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Launch modal 
+                </button>
+                <div class="container"></div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                                    <div class="modal-header" id="a">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">NOMINATE SPEAKER</h4>
+                                    </div>
+                                    <div class="checkbox">
+                                            <label><input type="checkbox">I am nominating myself</label>
+                                    </div>
+                                    <form>
+                                            <div class="form-group">
+                                              <label for="email">Name of speaker</label>
+                                              <input type="email" class="form-control" id="email">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="pwd">Email Address</label>
+                                              <input type="password" class="form-control" id="pwd">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="pwd">Mobile number</label>
+                                              <input type="password" class="form-control" id="pwd">
+                                            </div>
+                                            <div class="form-group">
+                                                    <label for="pwd">More details (Optional)</label>
+                                                    <input type="password" class="form-control" id="pwd">
+                                            </div>
+                                    </form>
+                    <div class="modal-footer" id="b">   
+                        <button class="btn btn-primary" onclick="SaveEditChanges()" id="bu">Submit Nomination</button>
+                    </div>
+
+                          </div>
+                </div>
+            </div>    
+            </div>
+        </body>
+</html>

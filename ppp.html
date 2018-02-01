@@ -1,0 +1,61 @@
+<html ng-app="appLogin">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="loginCtrl">
+    <form>
+        First name:<br>
+        <input type="text" name="firstname" placeholder="name" ng-model="user.name">
+        <br>
+        Last name:<br>
+        <input type="text" name="lastname" placeholder="last name" ng-model="user.lastname">
+        <br>
+        Age:<br>
+        <input type="number" name="age" placeholder="age" ng-model="user.age">
+        <br>
+        Sex:<br>
+        <input type="text" name="sex" placeholder="sex" value="male" ng-model="user.sex">
+        <br> <br>
+
+        <input type="submit" value="add" ng-click="login(user)">
+    </form>
+    <table class="table">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+        </tr>
+        <tr ng-repeat="temp in array">
+            <td> {{temp.name}}</td>
+            <td> {{temp.lastname}}</td>
+            <td> {{temp.age}}</td>
+            <td> {{temp.sex}}</td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    var appAdmin = angular.module('appLogin', []);
+    appAdmin.controller("loginCtrl", function ($scope) {
+        $scope.array = [ ]
+        $scope.login = function (user) {
+            var ew = user
+            var temp = {}
+            temp.name = user.name;
+            temp.lastname = user.lastname;
+            temp.age = user.age;
+            temp.sex = user.sex;
+            $scope.array.push(temp)
+            console.log($scope.array)
+        }
+    })
+
+
+</script>
+
+</body>
+
+</html>
