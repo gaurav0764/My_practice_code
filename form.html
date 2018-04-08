@@ -1,37 +1,72 @@
 <html>
-<html>
-    <body>
-            <script src="js\bootstrap.min.js"></script>
-        <form id="form" >
-            First name:<br>
-            <input type="text" name="firstname" value=" ">
-            <br>
-            Last name:<br>
-            <input type="text" name="lastname" value=" ">
-            <br>
-            Age:<br>
-            <input type="text" name="age" value=" ">
-            <br>
-            Sex:<br>
-            <input type="text" name="sex" value=" ">
-            <br> <br>
-            <input id="submit" type="submit" value="Submit">
-          </form> 
-          <div id="p"></div>
-    <script>
-            document.getElementById("submit").addEventListener("click", function() {
-            myFunction();
-            });
+<head>
+    <title> form validation </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" ng-app="myapp" ng-controller="myctrl">
+    <form ng-submit="addNew(student)" name="personForm" novalidate ng-submit="personForm.$valid &&sendForm()">
+        Name: <input type="text" placeholder="enter your name" ng-model="student.fname" ng-pattern=" " required><br><br>
+        Email id: <input type="text" placeholder="enter your email id" name="email" ng-model="student.email"
+                         ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required/>
+        <span style="color:Red" ng-show="personForm.email.$error.required"> Required! </span>
+        <span style="color:Red" ng-show="personForm.email.$dirty&&personForm.email.$error.pattern">Please Enter Valid Email</span><br><br>
 
-           function myFunction() {
-           var v= document.getElementById("form").value
-         }
-           {
-       
-    }
-        
-    </script>
-    
-    </body>
-</html>
+        Age : <input type="number" placeholder="enter your age" ng-model="student.age" required><br><br>
+        sex : <input type="radio" name="sex" value="male" ng-model="student.sex" required> male
+        <input type="radio" name="female" value="female" ng-model="student.sex"> female
+        <input type="radio" name="other" value="other" ng-model="student.sex">other
+
+        <button type="submit" class="btn btn-primary" > Submit</button>
+    </form>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email id</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="personalDetail in personalDetails">
+                    <td>{{personalDetail.fname}}</td>
+                    <td>{{personalDetail.email}}</td>
+                    <td>{{personalDetail.age}}</td>
+                    <td>{{personalDetail.sex}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var app = angular.module("myapp", []);
+    app.controller("myctrl", ['$scope', function($scope) {
+        $scope.personalDetails = [];
+        $scope.addNew = function (student) {
+            $scope.personalDetails.push({
+                'fname': student.fname,
+                'email': student.email,
+                'age': student.age,
+                'sex': student.sex,
+            });
+            console.log(student)
+
+        };
+    }]);
+
+
+</script>
+</body>
 </html>
