@@ -13,13 +13,21 @@
 
         pass: <input type="password" placeholder="type your password" ng-model="password"> <br> <br>
 
-        <button> submit</button>
+        <button ng-click="login(email,password)"> submit</button>
     </form>
 </div>
 <script>
     var app = angular.module('myApp', []);
     app.controller('formCtrl', function($scope) {
-        $scope.email = "John";
+        $scope.login= function ( email, password ) {
+         if( email=="gauravkumar0764@gmail.com" && password=="123456789"){
+             alert("succesfull login")
+         }
+         else{
+             alert("login failed")
+         }
+        }
+
     });
 </script>
 </head>
